@@ -29,6 +29,10 @@ namespace KartGame.KartSystems
         public float steeringAnimationDamping = 10f;
 
         [Space]
+        [Tooltip("distance between the wheel collider and the wheel mesh")]
+        public float wheelXDistance = 0.6115f;
+
+        [Space]
         [Tooltip("The maximum angle in degrees that the front wheels can be turned away from their default positions, when the Steering input is either 1 or -1.")]
         public float maxSteeringAngle;
         [Tooltip("Information referring to the front left wheel of the kart.")]
@@ -63,25 +67,25 @@ namespace KartGame.KartSystems
             frontRightWheel.wheelCollider.steerAngle = rotationAngle;
 
             // Update position and rotation from WheelCollider
-            UpdateWheelFromCollider(frontLeftWheel);
-            UpdateWheelFromCollider(frontRightWheel);
-            UpdateWheelFromCollider(rearLeftWheel);
-            UpdateWheelFromCollider(rearRightWheel);
+            UpdateWheelFromCollider(frontLeftWheel, true);
+            UpdateWheelFromCollider(frontRightWheel, false);
+            UpdateWheelFromCollider(rearLeftWheel, true);
+            UpdateWheelFromCollider(rearRightWheel, false);
         }
 
         void LateUpdate()
         {
             // Update position and rotation from WheelCollider
-            UpdateWheelFromCollider(frontLeftWheel);
-            UpdateWheelFromCollider(frontRightWheel);
-            UpdateWheelFromCollider(rearLeftWheel);
-            UpdateWheelFromCollider(rearRightWheel);
+            //UpdateWheelFromCollider(frontLeftWheel);
+            //UpdateWheelFromCollider(frontRightWheel);
+            //UpdateWheelFromCollider(rearLeftWheel);
+            //UpdateWheelFromCollider(rearRightWheel);
         }
 
-        void UpdateWheelFromCollider(Wheel wheel)
+        void UpdateWheelFromCollider(Wheel wheel, bool isLeftWheel)
         {
             wheel.wheelCollider.GetWorldPose(out Vector3 position, out Quaternion rotation);
-            wheel.wheelTransform.position = position;
+            //wheel.wheelTransform.position = (isLeftWheel) ? position - Vector3.left*wheelXDistance : position + Vector3.right*wheelXDistance;
             wheel.wheelTransform.rotation = rotation;
         }
     }

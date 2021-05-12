@@ -6,14 +6,16 @@ namespace KartGame.KartSystems {
     {
         public string TurnInputName = "Horizontal";
         public string AccelerateButtonName = "Accelerate";
+        public string ReverseButtonName = "Reverse";
         public string BrakeButtonName = "Brake";
 
         public override InputData GenerateInput() {
             return new InputData
             {
-                Accelerate = Input.GetButton(AccelerateButtonName),
+                Accelerate = Input.GetAxisRaw(AccelerateButtonName) > 0,
                 Brake = Input.GetButton(BrakeButtonName),
-                TurnInput = Input.GetAxis("Horizontal")
+                Reverse = Input.GetButton(ReverseButtonName),
+                TurnInput = Input.GetAxis(TurnInputName)
             };
         }
     }
