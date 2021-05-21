@@ -289,7 +289,7 @@ namespace KartGame.AI
             return new InputData
             {
                 Accelerate = m_Acceleration,
-                Brake = m_Brake,
+                Reverse = m_Brake,
                 TurnInput = m_Steering
             };
         }

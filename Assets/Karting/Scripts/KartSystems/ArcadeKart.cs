@@ -75,6 +75,7 @@ namespace KartGame.KartSystems
         public InputData Input     { get; private set; }
         public float AirPercent    { get; private set; }
         public float GroundPercent { get; private set; }
+        public float OnTrackPercent { get; private set; }
 
         public ArcadeKart.Stats baseStats = new ArcadeKart.Stats
         {
@@ -146,10 +147,11 @@ namespace KartGame.KartSystems
 
         [Header("Physical Wheels")]
         [Tooltip("The physical representations of the Kart's wheels.")]
-        public WheelCollider FrontLeftWheel;
-        public WheelCollider FrontRightWheel;
-        public WheelCollider RearLeftWheel;
-        public WheelCollider RearRightWheel;
+        public List<WheelCollider> WheelColliders;
+        //public WheelCollider FrontLeftWheel;
+        //public WheelCollider FrontRightWheel;
+        //public WheelCollider RearLeftWheel;
+        //public WheelCollider RearRightWheel;
 
         [Tooltip("Which layers the wheels will detect.")]
         public LayerMask GroundLayers = Physics.DefaultRaycastLayers;
@@ -236,23 +238,24 @@ namespace KartGame.KartSystems
             Rigidbody = GetComponent<Rigidbody>();
             m_Inputs = GetComponents<IInput>();
 
-            UpdateSuspensionParams(FrontLeftWheel);
-            UpdateSuspensionParams(FrontRightWheel);
-            UpdateSuspensionParams(RearLeftWheel);
-            UpdateSuspensionParams(RearRightWheel);
+            foreach (var wheel in WheelColliders)
+            {
+                UpdateSuspensionParams(wheel);
+            }
 
             m_CurrentGrip = baseStats.Grip;
 
             if (DriftSparkVFX != null)
             {
-                AddSparkToWheel(RearLeftWheel, -DriftSparkHorizontalOffset, -DriftSparkRotation);
-                AddSparkToWheel(RearRightWheel, DriftSparkHorizontalOffset, DriftSparkRotation);
+
+                AddSparkToWheel(WheelColliders[2], -DriftSparkHorizontalOffset, -DriftSparkRotation);
+                AddSparkToWheel(WheelColliders[3], DriftSparkHorizontalOffset, DriftSparkRotation);
             }
 
             if (DriftTrailPrefab != null)
             {
-                AddTrailToWheel(RearLeftWheel);
-                AddTrailToWheel(RearRightWheel);
+                AddTrailToWheel(WheelColliders[2]);
+                AddTrailToWheel(WheelColliders[3]);
             }
 
             if (NozzleVFX != null)
@@ -287,10 +290,10 @@ namespace KartGame.KartSystems
 
         void FixedUpdate()
         {
-            UpdateSuspensionParams(FrontLeftWheel);
-            UpdateSuspensionParams(FrontRightWheel);
-            UpdateSuspensionParams(RearLeftWheel);
-            UpdateSuspensionParams(RearRightWheel);
+            foreach (var wheel in WheelColliders)
+            {
+                UpdateSuspensionParams(wheel);
+            }
 
             GatherInputs();
 
@@ -301,17 +304,49 @@ namespace KartGame.KartSystems
             Rigidbody.centerOfMass = transform.InverseTransformPoint(CenterOfMass.position);
 
             int groundedCount = 0;
-            if (FrontLeftWheel.isGrounded && FrontLeftWheel.GetGroundHit(out WheelHit hit))
-                groundedCount++;
-            if (FrontRightWheel.isGrounded && FrontRightWheel.GetGroundHit(out hit))
-                groundedCount++;
-            if (RearLeftWheel.isGrounded && RearLeftWheel.GetGroundHit(out hit))
-                groundedCount++;
-            if (RearRightWheel.isGrounded && RearRightWheel.GetGroundHit(out hit))
-                groundedCount++;
+            int onTrackCount = 0;
+
+            foreach (var wheel in WheelColliders)
+            {
+                if (wheel.isGrounded && wheel.GetGroundHit(out WheelHit hit))
+                {
+                    groundedCount++;
+                    if (hit.collider.tag == "Track")
+                        onTrackCount++;
+                    Debug.Log(hit.collider.tag);
+                }
+            }
+            //if (FrontLeftWheel.isGrounded && FrontLeftWheel.GetGroundHit(out WheelHit hit))
+            //{
+            //    groundedCount++;
+            //    if (hit.collider.tag == "Track")
+            //        onTrackCount++;
+            //}
+
+            //if (FrontRightWheel.isGrounded && FrontRightWheel.GetGroundHit(out hit))
+            //{
+            //    groundedCount++;
+            //    if (hit.collider.tag == "Track")
+            //        onTrackCount++;
+            //}
+
+            //if (RearLeftWheel.isGrounded && RearLeftWheel.GetGroundHit(out hit))
+            //{
+            //    groundedCount++;
+            //    if (hit.collider.tag == "Track")
+            //        onTrackCount++;
+            //}
+
+            //if (RearRightWheel.isGrounded && RearRightWheel.GetGroundHit(out hit))
+            //{
+            //    groundedCount++;
+            //    if (hit.collider.tag == "Track")
+            //        onTrackCount++;
+            //}
 
             // calculate how grounded and airborne we are
             GroundPercent = (float) groundedCount / 4.0f;
+            OnTrackPercent = (float) onTrackCount / 4.0f;
             AirPercent = 1 - GroundPercent;
 
             // apply vehicle physics
@@ -422,7 +457,6 @@ namespace KartGame.KartSystems
         {
             float accelerateInput = (accelerate ? 1f : 0f) - (reverse ? 1f : 0f);
             // manual acceleration curve coefficient scalar
-            Debug.Log(reverse);
             float accelerationCurveCoeff = 5;
             Vector3 localVel = transform.InverseTransformVector(Rigidbody.velocity);
 
@@ -453,6 +487,11 @@ namespace KartGame.KartSystems
             Vector3 fwd = turnAngle * transform.forward;
             Vector3 movement = fwd * accelerateInput * finalAcceleration * ((m_HasCollision || GroundPercent > 0.0f) ? 1.0f : 0.0f);
 
+            if (GroundPercent > 0f)
+            {
+                movement -= movement * (1 - OnTrackPercent) * 0.4f;
+            }
+
             // forward movement
             bool wasOverMaxSpeed = brake ? Math.Abs(currentSpeed) > 0 : currentSpeed >= maxSpeed;
 
@@ -471,6 +510,7 @@ namespace KartGame.KartSystems
             //  clamp max speed if we are on ground
             if (GroundPercent > 0.0f && !wasOverMaxSpeed)
             {
+                maxSpeed -= maxSpeed * (1 - OnTrackPercent) * 0.4f;
                 newVelocity = Vector3.ClampMagnitude(newVelocity, maxSpeed);
             }
 

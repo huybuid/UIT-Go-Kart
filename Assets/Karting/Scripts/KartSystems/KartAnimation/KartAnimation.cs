@@ -73,19 +73,9 @@ namespace KartGame.KartSystems
             UpdateWheelFromCollider(rearRightWheel, false);
         }
 
-        void LateUpdate()
-        {
-            // Update position and rotation from WheelCollider
-            //UpdateWheelFromCollider(frontLeftWheel);
-            //UpdateWheelFromCollider(frontRightWheel);
-            //UpdateWheelFromCollider(rearLeftWheel);
-            //UpdateWheelFromCollider(rearRightWheel);
-        }
-
         void UpdateWheelFromCollider(Wheel wheel, bool isLeftWheel)
         {
             wheel.wheelCollider.GetWorldPose(out Vector3 position, out Quaternion rotation);
-            //wheel.wheelTransform.position = (isLeftWheel) ? position - Vector3.left*wheelXDistance : position + Vector3.right*wheelXDistance;
             wheel.wheelTransform.rotation = rotation;
         }
     }
