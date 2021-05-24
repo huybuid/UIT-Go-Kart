@@ -2,17 +2,17 @@
     "ArcadeDriver": {
         "checkpoints": [
             {
-                "steps": 6635,
-                "file_path": "results\\demo-track-1\\ArcadeDriver\\ArcadeDriver-6635.onnx",
-                "reward": -2.1170090275478146,
-                "creation_time": 1621563045.5200007
+                "steps": 67231,
+                "file_path": "results\\demo-track-1\\ArcadeDriver\\ArcadeDriver-67231.onnx",
+                "reward": 10.113905444063924,
+                "creation_time": 1621867531.615227
             }
         ],
         "final_checkpoint": {
-            "steps": 6635,
+            "steps": 67231,
             "file_path": "results\\demo-track-1\\ArcadeDriver.onnx",
-            "reward": -2.1170090275478146,
-            "creation_time": 1621563045.5200007
+            "reward": 10.113905444063924,
+            "creation_time": 1621867531.615227
         }
     },
     "metadata": {

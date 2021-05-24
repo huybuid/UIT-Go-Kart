@@ -140,8 +140,8 @@ checkpoint_settings:
   initialize_from: null
   load_model: false
   resume: false
-  force: false
-  train_model: true
+  force: true
+  train_model: false
   inference: false
   results_dir: results
 torch_settings:

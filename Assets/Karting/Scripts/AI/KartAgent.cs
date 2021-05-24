@@ -70,6 +70,8 @@ namespace KartGame.AI
         public float SpeedReward;
         [Tooltip("Reward the agent when it keeps accelerating")]
         public float AccelerationReward;
+        [Tooltip("Reward the agent when it tries to drift")]
+        public float DriftReward;
         #endregion
 
         #region ResetParams
@@ -256,6 +258,9 @@ namespace KartGame.AI
             AddReward(reward * TowardsCheckpointReward);
             AddReward((m_Acceleration && !m_Brake ? 1.0f : 0.0f) * AccelerationReward);
             AddReward(m_Kart.LocalSpeed() * SpeedReward);
+
+            //Reward the agent for trying to drift
+            AddReward((m_Kart.IsDrifting ? 1.0f : 0.0f) * DriftReward); 
         }
 
         public override void OnEpisodeBegin()
