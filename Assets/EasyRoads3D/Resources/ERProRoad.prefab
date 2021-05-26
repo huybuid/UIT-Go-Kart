@@ -113,8 +113,8 @@ MonoBehaviour:
   soSplinePoints: []
   soSplinePointsLeft: []
   soSplinePointsRight: []
-  ODDQCOQCCQ: []
-  OCOODCDQCQ: []
+  ODQOCQQCOC: []
+  OQDCQOQCCO: []
   meshVecs: []
   meshUVs: []
   meshUVs2: []
@@ -140,6 +140,8 @@ MonoBehaviour:
   startConnectionFlag: 1
   endConnectionSegment: 0
   endConnectionFlag: 1
+  startSegmentIntAdjusted: 0
+  endSegmentIntAdjusted: 0
   tCrossingConnected: 0
   roadMaterial: {fileID: 0}
   roadMaterials: []
@@ -180,8 +182,8 @@ MonoBehaviour:
   segPoints: []
   testPoints: []
   testPoints2: []
-  OQCQDCCCCD: {x: 0, y: 0, z: 0}
-  OOQODCQCDC: {x: 0, y: 0, z: 0}
+  OQCDQCOOCO: {x: 0, y: 0, z: 0}
+  ODQOQQDOCO: {x: 0, y: 0, z: 0}
   endLeft: {x: 0, y: 0, z: 0}
   endRight: {x: 0, y: 0, z: 0}
   testmesh: {fileID: 0}
@@ -246,3 +248,4 @@ MonoBehaviour:
   bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
+  laneData: []

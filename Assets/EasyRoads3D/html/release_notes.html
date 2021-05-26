@@ -24,12 +24,12 @@
 	  <tr>
 	    <td colspan="2" class="style1"><p class="style1">&nbsp;</p>
 	      <p class="header1" style="color:#000">Release Notes 
-	      v3.1.9f4<hr>
+	      v3.1.4<hr>
 	      <p class="style21">&nbsp;</p>
 	      <p class="header2">Important</p>
 	      <p class="style21">&nbsp;</p>
 	      <p class="style21">Importing package updates</p>
-          <p class="style1">Please do NOT remove the EasyRoads3D folder before importing a package update. Apart from newly created dynamic and custom connection prefabs, the EasyRoads3D folder also includes assets with project info such as road types, side objects. When you remove the EasyRoads3D folder  these assets will be lost. Also make sure to close the Custom Prefab Editor window if currently open before importing a package update.</p>
+          <p class="style1">Do NOT remove the EasyRoads3D folder before importing a package update. Apart from newly created dynamic and custom connection prefabs, the EasyRoads3D folder also includes assets with project info such as road types, side objects. When you remove the EasyRoads3D folder  these assets will be lost. Also make sure to close the Custom Prefab Editor window if currently open before importing a package update.</p>
           <p class="style1">Additionally, it is also recommended to switch road networks back to Edit Mode or better open an empty scene before importing a package update .</p>
           <p class="style1">And please always backup your project first. It is recommended to regularly backup your project anyway.</p>
           <p class="style21">&nbsp;</p>
@@ -50,23 +50,24 @@
           <p>&nbsp;</p>
           <p class="header1"><strong>Release Notes:</strong> </p>
           <p class="style1">Please visit our <a href="http://unityterraintools.com/v3beta.php" class="link">website</a> for beta release notes </p>
-
-<p class="style1">&nbsp;</p>
+<!--          <p class="style1"><strong>New:</strong></p>
+          <p class="style1">- Insert Connection: Matching connection prefabs based on road types can now be inserted at any marker position</p>
+          <p class="style1">&nbsp;</p>-->
 <p class="style1"><strong>New:</strong></p>
-<p class="style1">- Marker Road shape control through the scripting API: ERRoad.GetRoadShapeNodes(int markerIndex), ERRoad.SetRoadShapeNodes(int markerIndex, Vector2[] nodes) , ERRoad.SetRoadShapeNodes(int[] markerIndexes, Vector2[] nodes)</p>
+<p class="style1">- Option to duplicate a road type in General Settings &gt; Road Types</p>
+<p class="style1">- Unity 2018.3: Dynamic Connection source prefabs can now be edited in the Unit 2018.3 prefab system. </p>
+<p class="style1">- The Snap Connector.  These are  road type specific  prefab connectors that can be added to other prefabs. Scene instances of this road type can be pulled out or snapped to these connectors. This can be used for roads attached to other prefabs like buildings or bridges but also for side objects for which a "road type" is created. For example a gate with walls or fences attached. Snap Connector prefabs can be generated in General Settings &gt; Road Types &gt; Create Snap Connector (button near the bottom in the Inspector).</p>
 <p class="style1">&nbsp;</p>
-
 <p class="style1"><strong>Changed:</strong></p>
-<p>- Scripting API: Obsolete ERRoadNetwork.GetSourceConnectionByName(string name). This is replaced by ERRoadNetwork.GetConnectionPrefabByName(string name)</p>
-<p>&nbsp;</p>
-<p class="style1"><strong>Improved:</strong></p>
-<p class="style1">- The marker alignment options when 2 markers are selected can now also be used for two road object sections connected with an I Connector</p>
-<p class="style1">- Unity 2019.3, Inspector foldouts can now also be opened by clicking on the arrow just like in previous Unity versions</p>
+<p class="style1">- </p>
 <p class="style1">&nbsp;</p>
+<p class="style1"><strong>Improved:</strong></p>
+<p class="style1">- Combined side objects inheriting the shadow mode of the source prefab</p>
+<p class="style1">&nbsp; </p>
 <p class="style1"><strong>Fixed:</strong></p>
-<p class="style1">- Scripting API: ERRoad.SplitRoad(int markerIndex)<br>
-  - Missing Category selection option for side objects in the Side Object Manager<br>
-  - Miscellaneous other small bugs and improvements</p>
+<p class="style1">- Possibly wrong tangents on the procedural side object type</p>
+<p class="style1">- Unity 2018.3 errors when opening dynamic connections prefabs. Props can be added. Full dynamic prefab editing will follow in the next update</p>
+<p class="style1">- Miscellaneous other small bugs and improvements</p>
 <p class="style1">&nbsp;</p>
           <p class="header2">To Do / Current limitations:          </p>
           <p class="style1">&nbsp;</p>

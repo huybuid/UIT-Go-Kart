@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400000}
-  - component: {fileID: 6490628835550830091}
   m_Layer: 0
   m_Name: Road Objects
   m_TagString: Untagged
@@ -31,18 +30,6 @@ Transform:
   m_Father: {fileID: 400004}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6490628835550830091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1994553136, guid: f56d46228aee4734f9114056c53bb57e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,7 +40,6 @@ GameObject:
   m_Component:
   - component: {fileID: 400002}
   - component: {fileID: 11400002}
-  - component: {fileID: 9033072329208747251}
   m_Layer: 0
   m_Name: Connection Objects
   m_TagString: Untagged
@@ -85,18 +71,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1419717442, guid: f56d46228aee4734f9114056c53bb57e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &9033072329208747251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1994553136, guid: f56d46228aee4734f9114056c53bb57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &100004
@@ -146,8 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   updateInt: 10
   newSplatMapRestoreCode: 0
-  toolbarInt: 0
-  oldToolbarInt: 0
+  toolbarInt: 4
   roadToolbarInt: 0
   markerToolbarInt: 0
   menuTexs:
@@ -161,24 +134,21 @@ MonoBehaviour:
   subMenuTexs: []
   cprefab: {fileID: 0}
   nodeHandleTexture: {fileID: 0}
-  lockedTexture: {fileID: 2800000, guid: 8fb7d6b5f8b40f34e8048f47afa20f2a, type: 3}
-  unLockedTexture: {fileID: 2800000, guid: eb319a63188c2d44bacc8572c8a2111a, type: 3}
-  favOffTexture: {fileID: 0}
-  favOffFreeTexture: {fileID: 0}
-  favOnTexture: {fileID: 0}
+  lockedTexture: {fileID: 2800000, guid: 95bcc58da45020345aeaaaf89ea8a000, type: 3}
+  unLockedTexture: {fileID: 2800000, guid: 8b70bdf1ef68d1f429183b0746cc82be, type: 3}
   selRoadTexture: {fileID: 2800000, guid: 46e81e5d2c8b2144582558b65e45db86, type: 3}
   headerTexture: {fileID: 2800000, guid: 16ef664a0f7023c4a94fa58f50bf2899, type: 3}
   sceneGUITex: {fileID: 0}
   roadObjectsParent: {fileID: 400000}
   connectionObjectsParent: {fileID: 400002}
-  OQOOQOQQDD: {fileID: 0}
+  OCCDCDQDQO: {fileID: 0}
   roadTypes:
   - roadTypeName: Default Road
-    id: 1
+    id: 11
     timestamp: 0
-    roadWidth: 5
-    faceDistance: 4
-    angleTreshold: 0
+    roadWidth: 6
+    faceDistance: 2
+    angleTreshold: 45
     uvTiling: 1
     uv4Type: 0
     type: 0
@@ -199,14 +169,9 @@ MonoBehaviour:
       leftSidewalkOffset: 0
       rightSidewalkOffset: 0
       outerLaneMarkingLeftIndex: 0
-      includeOuterlaneLeftInShape: 0
-      includeOuterlaneRightInShape: 0
       outerLaneMarkingRightIndex: 0
-      outerOuterLaneMarkingLeftIndex: 0
-      outerOuterLaneMarkingRightIndex: 0
       selectedNode: 0
       selectedLaneNode: 0
-      isSymmetrical: 0
       isset: 0
     minSpeed: 0
     maxSpeed: 0
@@ -220,7 +185,6 @@ MonoBehaviour:
     roadShapeExtUVs: []
     roadShapeExtUVs2: []
     roadShapeUVs2: []
-    preserveUVs: 0
     hardEdge: 
     roadShapeVecsString: 
     defaultSidewalk: 0
@@ -240,18 +204,13 @@ MonoBehaviour:
     soDataExt: []
     soDataLog: []
     layer: 0
-    isStatic: 0
     tag: 
     splatMapActive: 0
     splatIndex: 0
-    expandLevel: 1
-    smoothLevel: 1
-    splatOpacity: 1
-    followTerrainContours: 0
-    terrainContoursOffset: 0
-    terrainDeformation: 0
-    defaultIndent: 3
-    defaultSurrounding: 3
+    expandLevel: 0
+    smoothLevel: 0
+    splatOpacity: 0
+    terrainDeformation: 1
     castShadow: 0
     randomnessFlag: 0
     randomYPosition: 0
@@ -263,25 +222,13 @@ MonoBehaviour:
     randomMaxRotation: 0
     minRandomRotationDistance: 0
     maxRandomRotationDistance: 0
-    vegetationStudioMaskLineActive: 0
     vegetationStudioGrassPerimeter: 0
     vegetationStudioPlantPerimeter: 0
     vegetationStudioTreePerimeter: 0
     vegetationStudioObjectPerimeter: 0
     vegetationStudioLargeObjectPerimeter: 0
-    vegetationStudioBiomeMaskActive: 0
-    vegetationStudioBiomeMaskDistance: 0
-    vegetationStudioBiomeMaskBlendDistance: 0
-    vegetationStudioBiomeMaskNoiseScale: 0
     decalPresets: []
     decalClassPresets: []
-    defaultRamp: 0
-    extrusionType: 0
-    extrusionDistance: 0
-    fixedDistance: 0
-    connectionAngle: 0
-    connectionRadius: 0
-    isRoadShape: 0
   selectedRoadType: 0
   selectedNewRoadType: 0
   inspRoadTypes: []
@@ -299,7 +246,6 @@ MonoBehaviour:
   targetMaterial: {fileID: 0}
   sourceTerrain: {fileID: 0}
   roadMaterials:
-  - dirt material
   - road material
   connectionMaterials:
   - crossing material
@@ -307,9 +253,8 @@ MonoBehaviour:
   selectedMaterial: 0
   selectedConnectionMaterial: 0
   materials: []
-  selectedRoadRoadType: 1
+  selectedRoadRoadType: 0
   roadOptions: 1
-  sidewalkOptions: 0
   markerOptions: 1
   showRoadSideObjects: 0
   markerSOOptions: 1
@@ -325,7 +270,7 @@ MonoBehaviour:
   selectedRoadRightInnerOffset: 0
   selectedCrossingMaterial: 0
   crossingTextureInfoIndex: 0
-  handleSelection: 1
+  handleSelection: 0
   positionHandleSelection: 1
   markerDirXZ: 0
   defaultCrossing: {fileID: 0}
@@ -337,7 +282,7 @@ MonoBehaviour:
   showAllPrefabs: 1
   standardPrefabsFlag: 0
   sceneSettingsFoldOut: 0
-  sceneRoadsFoldOut: 0
+  sceneRoadsFoldOut: 1
   scenePrefabsFoldOut: 0
   sidewalksFoldOut: 0
   terrainManagementFoldOut: 0
@@ -351,23 +296,20 @@ MonoBehaviour:
   heightRatio: 1
   dynamicPrefabsFoldOut: 1
   customPrefabsFoldOut: 1
-  dynamicFavList: []
-  customFavList: []
   prefabsDisplayType: 0
-  ignoreTerrainAlerts: 0
   osmTerrainTopLon: 0
   osmTerrainBottomLon: 0
   osmTerrainLeftLat: 0
   osmTerrainRightLat: 0
   terrainMinIndent: 2.9296875
-  minIndent: 3
-  minSurrounding: 3
+  minIndent: 2.9296875
+  minSurrounding: 5
   maxIndentSurrounding: 50
   terrainY: 0
   terrainDetailSplatX: 0.48828125
   terrainDetailSplatY: 0.48828125
   detailOffsetVec: {x: 0.48828125, y: 0, z: 0.48828125}
-  raise: 0
+  raise: 0.02
   baseVector: {x: 0, y: 0, z: 0}
   mirrorCrossings: 1
   terrainNames:
@@ -377,7 +319,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   terrainSplatTextures:
-  - Splat 1 - Grass ER
+  - Splat 1 - Grass ER ER
   activeTerrain: {fileID: 0}
   activeTerrainY: 0
   selectedTerrain: 0
@@ -406,7 +348,6 @@ MonoBehaviour:
   doLightmapUVs: 0
   doLODGroups: 0
   doSplatmaps: 0
-  sLayer: 31
   terrainHits: []
   osmCrossingPoints: []
   cornerPresets: []
@@ -426,8 +367,6 @@ MonoBehaviour:
   osmTrack: 0
   osmPath: 0
   osmWalkway: 0
-  osmRaceway: 0
-  osmHighwayStringInt: 0
   osmMotorwayFlag: 1
   osmMotorwayLinkFlag: 1
   osmTrunkFlag: 1
@@ -440,8 +379,6 @@ MonoBehaviour:
   osmTrackFlag: 1
   osmPathFlag: 1
   osmWalkwayFlag: 0
-  osmRacewayFlag: 1
-  osmHighwayString: 
   kmlRoadType: 0
   lodGroups: 0
   LODLevels: 4
@@ -457,10 +394,9 @@ MonoBehaviour:
   - 0.4
   embedRoadShape: 0
   hideSurfaces: 1
-  showSurfaces: 0
   useLightProbes: 0
   hideLockedObjects: 0
-  OCCQQOCOQO: 0
+  OQCQCCODDC: 0
   isInBuildMode: 0
   progressFlag: 0
   progressTerrain: 1
@@ -499,21 +435,18 @@ MonoBehaviour:
   highlightIndents: 1
   highlightSurroundings: 1
   highlightSideObject: 1
-  highlightRoadColor: {r: 0.39, g: 0.53, b: 0.9, a: 0.1}
-  highlightIndentColor: {r: 1, g: 1, b: 1, a: 0.1}
-  highlightSurroundingColor: {r: 1, g: 1, b: 1, a: 0.05}
   onlyShowSelectedRoad: 0
   soDeformationObjects: []
   soSplatmapObjects: []
   buildSOinEditMode: 1
-  tangentsInEditMode: 0
-  calculateSmoothNormals: 1
+  tangentsInEditMode: 1
+  calculateSmoothNormals: 0
   importSideObjectsAlert: 1
   importRoadPresetsAlert: 0
   importCrossingPresetsAlert: 0
   importSidewalkPresetsAlert: 0
-  updateSideObjectsAlert: 0
-  updateRoadPresetsAlert: 1
+  updateSideObjectsAlert: 1
+  updateRoadPresetsAlert: 0
   updateCrossingPresetsAlert: 0
   updateSidewalkPresetsAlert: 0
   waypointDistance: 10
@@ -538,22 +471,21 @@ MonoBehaviour:
   dirtyBool: 0
   dirtyOnSceneBool: 0
   forceRoadNetworkSelect: 0
-  ODDDDDQQDO: 1
-  OQOOQOQQDDScript: {fileID: 0}
-  OCOCOOQOQQCrossingsScript: {fileID: 0}
-  OCOCOOQOQQScript: {fileID: 0}
-  OQOOQOQQDDElement: -1
-  OCQDQOQOCD: -1
-  OQDODDOCCO: {fileID: 0}
-  OQDODQCQCQ: {fileID: 0}
-  OQDODQCOCO: -1
+  OQOOQDDQOD: 1
+  OCCDCDQDQOScript: {fileID: 0}
+  OOQOCDQQQDCrossingsScript: {fileID: 0}
+  OOQOCDQQQDScript: {fileID: 0}
+  OCCDCDQDQOElement: -1
+  OCQCCCCCOO: -1
+  OQDQOQDDCD: {fileID: 0}
+  OODODOOOOC: {fileID: 0}
+  OCCCQOOOCQ: -1
   selectedRoadSOMarker: -1
   selectedMarkerNode: -1
   selectedMarkerNodes: 
   selectedMarkerSONode: -1
   selectedMarkerSONodes: 
   selectedObjects: []
-  selectedExitRoad: -1
   newRoadFlag: 0
   roadTypeUpdateFlag: 0
   roadScripts: []
@@ -562,49 +494,13 @@ MonoBehaviour:
   gridGUIActive: 0
   globalGridColor: {r: 0.35, g: 0.5, b: 0.9, a: 0.9}
   globalGridSize: 10
-  globalGridRadius: 1000
   globalGridRotation: 0
-  gridOffset: {x: 0, y: 0}
   ggTL: {x: 0, y: 0, z: 0}
   ggBL: {x: 0, y: 0, z: 0}
   ggBR: {x: 0, y: 0, z: 0}
   localGridActive: 0
   localGrids: []
   selectedLocalGrid: 0
-  sw:
-    name: 
-    id: 0
-    timestamp: 0
-    sidewalkWidth: 1.5
-    curbHeight: 0.25
-    curbDepth: 0.25
-    beveledCurb: 0
-    beveledHeight: 0
-    beveledDepth: 0
-    outerCurb: 0
-    roadSideCurbUVControl: 0
-    outerSideCurbUVControl: 0
-    material: {fileID: 0}
-    hardEdges: 0
-    shape: []
-    sidewalkUVs: []
-    curbUVs: []
-    doConnectionTri: 
-    tileRect:
-      serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
-    tileSize: 1
-    tiling: 1
-    uvRatio: 1
-    minEnd: 1
-    maxEnd: 1
-    lockUVs: 0
-    cornerRadius: 1
-    cornerSegments: 5
-    innerSegmentDistance: 0.5
   roadUpdated: 0
   clampUVs: 1
   soCategoryInt: 0
@@ -618,34 +514,18 @@ MonoBehaviour:
   lockRoadNetwork: 0
   showNotifications: 1
   multipleTerrainsWarning: 0
-  ODDCCDQDCD: []
-  OCQCQQQQCQ: []
-  textureCounter: 0
   vegetationStudio: 0
-  vegetationStudioPro: 0
   vegetationStudioActive: 0
-  vegetationStudioMaskLineActive: 1
   vegetationStudioGrassPerimeter: 2
   vegetationStudioPlantPerimeter: 3
   vegetationStudioTreePerimeter: 4
   vegetationStudioObjectPerimeter: 3
   vegetationStudioLargeObjectPerimeter: 4
-  vegetationStudioBiomeMaskActive: 0
-  vegetationStudioBiomeMaskDistance: 0
-  vegetationStudioBiomeMaskBlendDistance: 0
-  vegetationStudioBiomeMaskNoiseScale: 0
   aiTraffic: 0
-  aiMatchingLanesOnly: 1
-  aiconnectNonMatchinglaneCounts: 1
-  aiIgnoreConnections: 1
   displayLaneData: 0
   rightHandDriving: 1
-  leftLaneHandleColour: {r: 0.1, g: 0.1, b: 0.1, a: 0.75}
-  rightLaneHandleColour: {r: 1, g: 1, b: 1, a: 0.75}
+  leftLaneHandleColour: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+  rightLaneHandleColour: {r: 1, g: 1, b: 1, a: 0.5}
   laneHandleSelectedColour: {r: 1, g: 1, b: 0, a: 0.5}
-  roadUvThreshold: 1750
   updateQueue: 0
-  logChange: 0
   debugMode: 0
-  excludeFromSelection: []
-  addExcludeFromSelection: {fileID: 0}
