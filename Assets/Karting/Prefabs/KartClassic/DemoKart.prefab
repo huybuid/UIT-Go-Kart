@@ -152,7 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2702866642670720066}
   - component: {fileID: 2702866642670720067}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: BodyColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,14 +553,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats:
-    TopSpeed: 80
-    Acceleration: 40
-    ReverseSpeed: 45
-    ReverseAcceleration: 30
+    TopSpeed: 20
+    Acceleration: 5
+    ReverseSpeed: 10
+    ReverseAcceleration: 5
     AccelerationCurve: 0.5
-    Braking: 30
-    CoastingDrag: 15
-    Grip: 0.95
+    Braking: 20
+    CoastingDrag: 5
+    Grip: 0.5
     Steer: 1
     AddedGravity: 5
   m_VisualWheels:
@@ -570,12 +570,12 @@ MonoBehaviour:
   - {fileID: 2672095345990857935}
   CenterOfMass: {fileID: 2702866642908049111}
   AirborneReorientationCoefficient: 3
-  DriftGrip: 0.4
-  DriftAdditionalSteer: 1
-  MinAngleToFinishDrift: 20
+  DriftGrip: 0.45
+  DriftAdditionalSteer: 1.5
+  MinAngleToFinishDrift: 30
   MinSpeedPercentToFinishDrift: 0.4
   DriftControl: 10
-  DriftDampening: 14.9
+  DriftDampening: 15
   DriftSparkVFX: {fileID: 8830480157447028811, guid: 3b4f7a67fa29af149aa087ff63731013,
     type: 3}
   DriftSparkHorizontalOffset: 0.1
@@ -591,10 +591,11 @@ MonoBehaviour:
   SuspensionSpring: 66852
   SuspensionDamp: 5000
   WheelsPositionVerticalOffset: 0
-  FrontLeftWheel: {fileID: 2702866643364152496}
-  FrontRightWheel: {fileID: 2702866644216380555}
-  RearLeftWheel: {fileID: 2702866642417240992}
-  RearRightWheel: {fileID: 2702866643413716716}
+  WheelColliders:
+  - {fileID: 2702866643364152496}
+  - {fileID: 2702866644216380555}
+  - {fileID: 2702866642417240992}
+  - {fileID: 2702866643413716716}
   GroundLayers:
     serializedVersion: 2
     m_Bits: 4294967291
@@ -612,6 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TurnInputName: Horizontal
   AccelerateButtonName: Accelerate
+  ReverseButtonName: Reverse
   BrakeButtonName: Brake
 --- !u!114 &7715155986660943024
 MonoBehaviour:
