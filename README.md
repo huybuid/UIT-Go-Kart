@@ -1,5 +1,6 @@
 # UIT-Go-Kart
 ## Unity version: 2020.3.1f.1
+## Python version: 3.7.7
 
 Steps to setup MLAgents' environment:
 1. Install python
