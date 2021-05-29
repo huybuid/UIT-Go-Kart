@@ -2,23 +2,41 @@
     "ArcadeDriver": {
         "checkpoints": [
             {
-                "steps": 179977,
-                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-179977.onnx",
-                "reward": 3.407672759484161,
-                "creation_time": 1622128001.634281
+                "steps": 313643,
+                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-313643.onnx",
+                "reward": null,
+                "creation_time": 1622263272.1560326
             },
             {
-                "steps": 218793,
-                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-218793.onnx",
-                "reward": 3.5001096857918634,
-                "creation_time": 1622133936.8741152
+                "steps": 330081,
+                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-330081.onnx",
+                "reward": 25.96314557329301,
+                "creation_time": 1622263571.0286605
+            },
+            {
+                "steps": 348332,
+                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-348332.onnx",
+                "reward": 5.377332438319309,
+                "creation_time": 1622288622.7138407
+            },
+            {
+                "steps": 361047,
+                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-361047.onnx",
+                "reward": 6.151394342121325,
+                "creation_time": 1622288871.2585862
+            },
+            {
+                "steps": 430081,
+                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-430081.onnx",
+                "reward": 22.257118392497937,
+                "creation_time": 1622289763.1847992
             }
         ],
         "final_checkpoint": {
-            "steps": 218793,
+            "steps": 430081,
             "file_path": "results\\demo-track-2\\ArcadeDriver.onnx",
-            "reward": 3.5001096857918634,
-            "creation_time": 1622133936.8741152
+            "reward": 22.257118392497937,
+            "creation_time": 1622289763.1847992
         }
     },
     "metadata": {
