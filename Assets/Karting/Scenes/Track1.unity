@@ -10969,7 +10969,7 @@ PrefabInstance:
     - target: {fileID: 7715155986660943036, guid: 3214a4f2ac5550646bd023ea9ab07658,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7715155986660943038, guid: 3214a4f2ac5550646bd023ea9ab07658,
         type: 3}
@@ -16901,7 +16901,7 @@ PrefabInstance:
     - target: {fileID: 7715155986660943036, guid: 3214a4f2ac5550646bd023ea9ab07658,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7715155986660943038, guid: 3214a4f2ac5550646bd023ea9ab07658,
         type: 3}
@@ -30106,7 +30106,7 @@ PrefabInstance:
     - target: {fileID: 7715155986660943036, guid: 3214a4f2ac5550646bd023ea9ab07658,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7715155986660943038, guid: 3214a4f2ac5550646bd023ea9ab07658,
         type: 3}
@@ -31991,7 +31991,7 @@ PrefabInstance:
     - target: {fileID: 7715155986660943036, guid: 3214a4f2ac5550646bd023ea9ab07658,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7715155986660943038, guid: 3214a4f2ac5550646bd023ea9ab07658,
         type: 3}
@@ -35343,7 +35343,7 @@ PrefabInstance:
     - target: {fileID: 7715155986660943036, guid: 3214a4f2ac5550646bd023ea9ab07658,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7715155986660943038, guid: 3214a4f2ac5550646bd023ea9ab07658,
         type: 3}
@@ -44571,6 +44571,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2702866643077427435, guid: 6dca7a874521faf45918c1217ccd0536,
         type: 3}
+      propertyPath: Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2702866643077427435, guid: 6dca7a874521faf45918c1217ccd0536,
+        type: 3}
       propertyPath: Colliders.Array.data[0]
       value: 
       objectReference: {fileID: 1862609658}
@@ -44644,10 +44649,20 @@ PrefabInstance:
       propertyPath: Colliders.Array.data[14]
       value: 
       objectReference: {fileID: 538634858}
+    - target: {fileID: 2702866643077427436, guid: 6dca7a874521faf45918c1217ccd0536,
+        type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3662464964881833110, guid: 6dca7a874521faf45918c1217ccd0536,
         type: 3}
       propertyPath: m_Name
       value: DemoKart-AI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662464964881833110, guid: 6dca7a874521faf45918c1217ccd0536,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4150173536254166572, guid: 6dca7a874521faf45918c1217ccd0536,
         type: 3}

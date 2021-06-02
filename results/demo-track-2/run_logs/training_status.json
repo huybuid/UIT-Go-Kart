@@ -2,18 +2,6 @@
     "ArcadeDriver": {
         "checkpoints": [
             {
-                "steps": 313643,
-                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-313643.onnx",
-                "reward": null,
-                "creation_time": 1622263272.1560326
-            },
-            {
-                "steps": 330081,
-                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-330081.onnx",
-                "reward": 25.96314557329301,
-                "creation_time": 1622263571.0286605
-            },
-            {
                 "steps": 348332,
                 "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-348332.onnx",
                 "reward": 5.377332438319309,
@@ -30,13 +18,25 @@
                 "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-430081.onnx",
                 "reward": 22.257118392497937,
                 "creation_time": 1622289763.1847992
+            },
+            {
+                "steps": 499946,
+                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-499946.onnx",
+                "reward": 12.639782594073386,
+                "creation_time": 1622631645.1013596
+            },
+            {
+                "steps": 615096,
+                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-615096.onnx",
+                "reward": null,
+                "creation_time": 1622632462.0954697
             }
         ],
         "final_checkpoint": {
-            "steps": 430081,
+            "steps": 615096,
             "file_path": "results\\demo-track-2\\ArcadeDriver.onnx",
-            "reward": 22.257118392497937,
-            "creation_time": 1622289763.1847992
+            "reward": null,
+            "creation_time": 1622632462.0954697
         }
     },
     "metadata": {
