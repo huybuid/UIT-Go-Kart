@@ -2,24 +2,6 @@
     "ArcadeDriver": {
         "checkpoints": [
             {
-                "steps": 348332,
-                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-348332.onnx",
-                "reward": 5.377332438319309,
-                "creation_time": 1622288622.7138407
-            },
-            {
-                "steps": 361047,
-                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-361047.onnx",
-                "reward": 6.151394342121325,
-                "creation_time": 1622288871.2585862
-            },
-            {
-                "steps": 430081,
-                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-430081.onnx",
-                "reward": 22.257118392497937,
-                "creation_time": 1622289763.1847992
-            },
-            {
                 "steps": 499946,
                 "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-499946.onnx",
                 "reward": 12.639782594073386,
@@ -30,13 +12,31 @@
                 "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-615096.onnx",
                 "reward": null,
                 "creation_time": 1622632462.0954697
+            },
+            {
+                "steps": 707532,
+                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-707532.onnx",
+                "reward": null,
+                "creation_time": 1622653906.7773263
+            },
+            {
+                "steps": 773078,
+                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-773078.onnx",
+                "reward": 62.21871457099915,
+                "creation_time": 1622657627.1871262
+            },
+            {
+                "steps": 970867,
+                "file_path": "results\\demo-track-2\\ArcadeDriver\\ArcadeDriver-970867.onnx",
+                "reward": 44.81640882492066,
+                "creation_time": 1622689040.7506998
             }
         ],
         "final_checkpoint": {
-            "steps": 615096,
+            "steps": 970867,
             "file_path": "results\\demo-track-2\\ArcadeDriver.onnx",
-            "reward": null,
-            "creation_time": 1622632462.0954697
+            "reward": 44.81640882492066,
+            "creation_time": 1622689040.7506998
         }
     },
     "metadata": {

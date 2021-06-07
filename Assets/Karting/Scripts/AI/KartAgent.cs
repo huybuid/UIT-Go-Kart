@@ -70,8 +70,8 @@ namespace KartGame.AI
         public float SpeedReward;
         [Tooltip("Reward the agent when it keeps accelerating")]
         public float AccelerationReward;
-        [Tooltip("Reward the agent when it tries to drift")]
-        public float DriftReward;
+        [Tooltip("A training episode will end when it reaches the penalty threshold")]
+        public float PenaltyThreshold;
         #endregion
 
         #region ResetParams
@@ -97,6 +97,7 @@ namespace KartGame.AI
 
         bool m_EndEpisode;
         float m_LastAccumulatedReward;
+        float m_CummilativePenalty;
 
         void Awake()
         {
@@ -114,8 +115,10 @@ namespace KartGame.AI
 
         void Update()
         {
+            //Debug.Log(this.name + " - Updating");
             if (m_EndEpisode)
             {
+                Debug.Log(m_LastAccumulatedReward);
                 m_EndEpisode = false;
                 AddReward(m_LastAccumulatedReward);
                 EndEpisode();
@@ -231,18 +234,21 @@ namespace KartGame.AI
                     if (hitInfo.distance < current.HitValidationDistance)
                     {
                         m_LastAccumulatedReward += HitPenalty;
-                        m_EndEpisode = true;
+                        m_CummilativePenalty += HitPenalty;
                     }
                 }
-
+                
                 sensor.AddObservation(hit ? hitInfo.distance : current.RayDistance);
             }
 
+            if (m_CummilativePenalty <= PenaltyThreshold)
+                m_EndEpisode = true;
             sensor.AddObservation(m_Acceleration);
         }
 
         public override void OnActionReceived(float[] vectorAction)
         {
+            //Debug.Log(this.name + " - Receiving actions");
             base.OnActionReceived(vectorAction);
             InterpretDiscreteActions(vectorAction);
 
@@ -258,9 +264,6 @@ namespace KartGame.AI
             AddReward(reward * TowardsCheckpointReward);
             AddReward((m_Acceleration && !m_Brake ? 1.0f : 0.0f) * AccelerationReward);
             AddReward(m_Kart.LocalSpeed() * SpeedReward);
-
-            //Reward the agent for trying to drift
-            AddReward((m_Kart.IsDrifting ? 1.0f : 0.0f) * DriftReward); 
         }
 
         public override void OnEpisodeBegin()
@@ -269,6 +272,11 @@ namespace KartGame.AI
             {
                 case AgentMode.Training:
                     m_CheckpointIndex = Random.Range(0, Colliders.Length - 1);
+                    //Scripts for training
+                    if (m_CheckpointIndex < 9)
+                        m_CheckpointIndex = 9;
+                    else if (m_CheckpointIndex > 17)
+                        m_CheckpointIndex = 17;
                     var collider = Colliders[m_CheckpointIndex];
                     transform.localRotation = collider.transform.rotation;
                     transform.position = collider.transform.position;
@@ -276,6 +284,7 @@ namespace KartGame.AI
                     m_Acceleration = false;
                     m_Brake = false;
                     m_Steering = 0f;
+                    m_CummilativePenalty = 0f;
                     break;
                 default:
                     break;
@@ -286,7 +295,7 @@ namespace KartGame.AI
         {
             m_Steering = actions[0] - 1f;
             m_Acceleration = actions[1] >= 1.0f;
-            m_Brake = actions[1] < 1.0f;
+            m_Brake = actions[2] < 1.0f;
         }
 
         public InputData GenerateInput()

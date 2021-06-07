@@ -118,7 +118,7 @@ namespace KartGame.KartSystems
         [Header("VFX")]
         [Tooltip("VFX that will be placed on the wheels when drifting.")]
         public ParticleSystem DriftSparkVFX;
-        [Range(0.0f, 0.2f), Tooltip("Offset to displace the VFX to the side.")]
+        [Range(0.0f, 2f), Tooltip("Offset to displace the VFX to the side.")]
         public float DriftSparkHorizontalOffset = 0.1f;
         [Range(0.0f, 90.0f), Tooltip("Angle to rotate the VFX.")]
         public float DriftSparkRotation = 17.0f;
@@ -128,6 +128,8 @@ namespace KartGame.KartSystems
         public float DriftTrailVerticalOffset;
         [Tooltip("VFX that will spawn upon landing, after a jump.")]
         public GameObject JumpVFX;
+        [Tooltip("VFX that will spawn upon running on dirt.")]
+        public GameObject DirtVFX;
         [Tooltip("VFX that is spawn on the nozzles of the kart.")]
         public GameObject NozzleVFX;
         [Tooltip("List of the kart's nozzles.")]
@@ -193,8 +195,12 @@ namespace KartGame.KartSystems
             {
                 if (active && vfx.wheel.GetGroundHit(out WheelHit hit))
                 {
+
                     if (!vfx.sparks.isPlaying)
+                    {
                         vfx.sparks.Play();
+                        Debug.Log("drifting");
+                    }
                 }
                 else
                 {
@@ -210,15 +216,18 @@ namespace KartGame.KartSystems
 
         private void UpdateDriftVFXOrientation()
         {
+            Vector3 offset;
             foreach (var vfx in m_DriftSparkInstances)
             {
-                vfx.sparks.transform.position = vfx.wheel.transform.position - (vfx.wheel.radius * Vector3.up) + (DriftTrailVerticalOffset * Vector3.up) + (transform.right * vfx.horizontalOffset);
+                offset = (-(vfx.wheel.radius * Vector3.up) + (DriftTrailVerticalOffset * Vector3.up) + (transform.right * vfx.horizontalOffset)) * transform.localScale.x;
+                vfx.sparks.transform.position = vfx.wheel.transform.position + offset;
                 vfx.sparks.transform.rotation = transform.rotation * Quaternion.Euler(0.0f, 0.0f, vfx.rotation);
             }
 
             foreach (var trail in m_DriftTrailInstances)
             {
-                trail.trailRoot.transform.position = trail.wheel.transform.position - (trail.wheel.radius * Vector3.up) + (DriftTrailVerticalOffset * Vector3.up);
+                offset = (-(trail.wheel.radius * Vector3.up) + (DriftTrailVerticalOffset * Vector3.up)) * transform.localScale.x;
+                trail.trailRoot.transform.position = trail.wheel.transform.position + offset;
                 trail.trailRoot.transform.rotation = transform.rotation;
             }
         }
@@ -247,7 +256,6 @@ namespace KartGame.KartSystems
 
             if (DriftSparkVFX != null)
             {
-
                 AddSparkToWheel(WheelColliders[2], -DriftSparkHorizontalOffset, -DriftSparkRotation);
                 AddSparkToWheel(WheelColliders[3], DriftSparkHorizontalOffset, DriftSparkRotation);
             }
@@ -270,6 +278,9 @@ namespace KartGame.KartSystems
         void AddTrailToWheel(WheelCollider wheel)
         {
             GameObject trailRoot = Instantiate(DriftTrailPrefab, gameObject.transform, false);
+            Transform child = trailRoot.transform.GetChild(0);
+            child.localScale *= 1 / transform.localScale.x;
+            child.localPosition *= 1 / transform.localScale.x;
             TrailRenderer trail = trailRoot.GetComponentInChildren<TrailRenderer>();
             trail.emitting = false;
             m_DriftTrailInstances.Add((trailRoot, wheel, trail));
@@ -277,15 +288,18 @@ namespace KartGame.KartSystems
 
         void AddSparkToWheel(WheelCollider wheel, float horizontalOffset, float rotation)
         {
+            Debug.Log("Added spark to wheel");
             GameObject vfx = Instantiate(DriftSparkVFX.gameObject, wheel.transform, false);
             ParticleSystem spark = vfx.GetComponent<ParticleSystem>();
             spark.Stop();
             m_DriftSparkInstances.Add((wheel, horizontalOffset, -rotation, spark));
         }
 
-        void AddDirtToWheel(WheelCollider wheel)
+        void SpawnDirtVFX(WheelCollider wheel)
         {
-
+            Debug.Log("Pawning dirt");
+            GameObject vfx = Instantiate(DirtVFX);
+            vfx.transform.position = wheel.transform.position - (wheel.radius * Vector3.up * transform.localScale.x);
         }
 
         void FixedUpdate()
@@ -313,7 +327,12 @@ namespace KartGame.KartSystems
                     groundedCount++;
                     if (hit.collider.tag == "Track")
                         onTrackCount++;
-                    Debug.Log(hit.collider.tag);
+                    else if (hit.collider.tag == "Ground" && Math.Abs(LocalSpeed()) >= 0.3f)
+                        SpawnDirtVFX(wheel);
+                    else
+                        Debug.Log(LocalSpeed());
+
+                    //Debug.Log(hit.collider.tag);
                 }
             }
             //if (FrontLeftWheel.isGrounded && FrontLeftWheel.GetGroundHit(out WheelHit hit))
